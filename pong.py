@@ -22,7 +22,7 @@ prawa_paletka.penup()
 prawa_paletka.goto(400, 0)
 
 pilka = turtle.Turtle()
-pilka.speed(5)
+pilka.speed(30)
 pilka.shape("circle")
 pilka.color("black")
 pilka.penup()
@@ -92,6 +92,32 @@ while(True):
     # if pilka.xcor() < -480:
     #     pilka.setx(-480)
     #     pilka.dx *= -1
+
+    if pilka.xcor() > 500:
+        pilka.goto(0, 0)
+        pierwszy_gracz += 1
+        napis.clear()
+        napis.write("Pierwszy gracz : {}    Drugi gracz: {}".format(
+            pierwszy_gracz, drugi_gracz), align="center",
+            font=("Courier", 24, "normal"))
+
+    if pilka.xcor() < -500:
+        pilka.goto(0, 0)
+        pilka.dy *= -1
+        drugi_gracz += 1
+        napis.clear()
+        napis.write("Pierwszy gracz : {}    Drugi gracz: {}".format(
+            pierwszy_gracz, drugi_gracz), align="center",
+            font=("Courier", 24, "normal"))
+
+    if (pilka.xcor() > 360 and pilka.xcor() < 370 and abs(prawa_paletka.ycor() - pilka.ycor()) <50):
+        pilka.setx(360)
+        pilka.dx *= -1
+
+    if (pilka.xcor() < -360 and pilka.xcor() > -370 and abs(lewa_paletka.ycor() - pilka.ycor()) <50):
+        pilka.setx(-360)
+        pilka.dx *= -1
+
 
 # while True:
 #     sc.update()
